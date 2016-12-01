@@ -21,9 +21,9 @@ def print(students, start_letter = "")
   students.each_with_index {
     |n,i|
     if start_letter == ""
-      puts "#{i+1}. #{n[:name]} (#{n[:cohort]} cohort)"
+      puts "#{i+1}. #{n[:name]} (#{n[:cohort]} cohort)" if n[:name].length < 12
     else
-      puts "#{i+1}. #{n[:name]} (#{n[:cohort]} cohort)" if n[:name][0].downcase == start_letter.downcase
+      puts "#{i+1}. #{n[:name]} (#{n[:cohort]} cohort)" if n[:name][0].downcase == start_letter.downcase && n[:name].length < 12
     end
    }
 end
