@@ -17,8 +17,15 @@ def print_header
   puts "-------------"
 end
 
-def print(students)
-  students.each_with_index { |n,i| puts "#{i+1}. #{n[:name]} (#{n[:cohort]} cohort)" }
+def print(students, start_letter = "")
+  students.each_with_index {
+    |n,i|
+    if start_letter == ""
+      puts "#{i+1}. #{n[:name]} (#{n[:cohort]} cohort)"
+    else
+      puts "#{i+1}. #{n[:name]} (#{n[:cohort]} cohort)" if n[:name][0].downcase == start_letter.downcase
+    end
+   }
 end
 
 def print_footer(students)
