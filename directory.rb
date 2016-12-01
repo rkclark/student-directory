@@ -18,14 +18,17 @@ def print_header
 end
 
 def print(students, start_letter = "")
-  students.each_with_index {
-    |n,i|
-    if start_letter == ""
-      puts "#{i+1}. #{n[:name]} (#{n[:cohort]} cohort)" if n[:name].length < 12
-    else
-      puts "#{i+1}. #{n[:name]} (#{n[:cohort]} cohort)" if n[:name][0].downcase == start_letter.downcase && n[:name].length < 12
-    end
-   }
+     iterator = 0
+   while true
+     n = students[iterator]
+     if start_letter == ""
+       puts "#{iterator+1}. #{n[:name]} (#{n[:cohort]} cohort)" if n[:name].length < 12
+     else
+       puts "#{iterator+1}. #{n[:name]} (#{n[:cohort]} cohort)" if n[:name][0].downcase == start_letter.downcase && n[:name].length < 12
+     end
+     iterator += 1
+     break if iterator == students.length
+   end
 end
 
 def print_footer(students)
