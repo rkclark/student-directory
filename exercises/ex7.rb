@@ -1,10 +1,10 @@
 def print_header
-  puts "The students of Villains Academy"
-  puts "-------------"
+  puts "The students of Villains Academy".center(40)
+  puts "-------------".center(40)
 end
 
 def print(students)
-  students.each { |n| puts "#{n[:name]} (#{n[:cohort]} cohort)" }
+  students.each { |n| puts "#{n[:name]} (#{n[:cohort]} cohort)".center(40) }
 end
 
 def print_footer(students)
@@ -12,7 +12,7 @@ def print_footer(students)
 end
 
 def input_students
-  puts "Please enter the names of the students"
+  puts "Please enter the name and cohort of the students, separated by a comma"
   puts "To finish, just hit return twice"
   # create empty array
   students = []
@@ -20,8 +20,9 @@ def input_students
   name = gets.chomp
   # while name not empty, repeat this code
   while !name.empty? do
+    info = name.split(",")
     # add student hash to array
-    students << {name: name, cohort: :november}
+    students << {name: info[0], cohort: (info[1] ? (info[1].to_sym) : (:unspecified))}
     puts "Now we have #{students.count} students"
     # get another name from user
     name = gets.chomp
